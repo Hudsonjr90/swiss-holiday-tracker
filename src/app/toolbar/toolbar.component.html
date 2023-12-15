@@ -1,32 +1,22 @@
 <div class="toolbar-container">
-    <select name="canton-select"
-            class="canton-select"
-            [(ngModel)]="selectedCanton"
-            (ngModelChange)="emitSelectedCanton($event)">
+    <select name="canton-select" class="canton-select" [(ngModel)]="selectedCanton"
+        (ngModelChange)="emitSelectedCanton($event)">
         @for(canton of cantonList; track canton.kanCode){
         <option [ngValue]="canton">{{canton.kanName}}</option>
         }
     </select>
     <div class="select-date">
-        <label for="date"
-               class="date-selector">
-            <input id="dateSelector"
-                   type="date"
-                   [ngModel]="selectedDate | date:'yyyy-MM-dd'"
-                   (ngModelChange)="updateDates($event)">
+        <label for="date" class="date-selector">
+            <input id="dateSelector" type="date" [ngModel]="selectedDate | date:'yyyy-MM-dd'"
+                (ngModelChange)="updateDates($event)">
         </label>
     </div>
     <div class="days-to-show">
         @for(ammount of ammountOfDays; track ammount){
-        <label class="radio-buttons"
-               [for]="(ammount+'RadioButton')"
-               [ngClass]="{'checked': daysToShow === ammount}">
+        <label class="radio-buttons" [for]="(ammount+'RadioButton')" [ngClass]="{'checked': daysToShow === ammount}">
             {{ammount}}
-            <input type="radio"
-                   [id]="(ammount+'RadioButton')"
-                   name="ammountOfDays"
-                   [value]="ammount"
-                   (click)="setNumberOfDaysToShow(ammount)" />
+            <input type="radio" [id]="(ammount+'RadioButton')" name="ammountOfDays" [value]="ammount"
+                (click)="setNumberOfDaysToShow(ammount)" />
         </label>
         }
     </div>

@@ -1,10 +1,7 @@
-<app-toolbar (numberOfDaysToShow)="setSelectedDays($event)"
-             (cantonToShow)="setSelectedCanton($event)"
-             (calendarType)="setCalendarType($event)"
-             (selectedDay)="setSelectedDay($event)" />
+<app-toolbar (numberOfDaysToShow)="setSelectedDays($event)" (cantonToShow)="setSelectedCanton($event)"
+    (calendarType)="setCalendarType($event)" (selectedDay)="setSelectedDay($event)" />
 
-<div class="calendar-days-container"
-     [ngClass]="{'year':calendarType === allCalendarTypes.year}">
+<div class="calendar-days-container" [ngClass]="{'year':calendarType === allCalendarTypes.year}">
     @if(calendarType !== allCalendarTypes.year){
     <div class="title-bar">
         @if (calendarType === allCalendarTypes.day) {
@@ -22,12 +19,10 @@
 
         @for (day of selectedDays; track day.day) {
 
-        <app-calendar-day [ngClass]="{'single': calendarType === allCalendarTypes.day, 'week': calendarType === allCalendarTypes.week}"
-                          [dayToShow]="day"
-                          [selectedDay]="selectedDay"
-                          [calendarType]="calendarType"
-                          [selectedCanton]="selectedCanton"
-                          [month]="day.month" />
+        <app-calendar-day
+            [ngClass]="{'single': calendarType === allCalendarTypes.day, 'week': calendarType === allCalendarTypes.week}"
+            [dayToShow]="day" [selectedDay]="selectedDay" [calendarType]="calendarType"
+            [selectedCanton]="selectedCanton" [month]="day.month" />
         }
     </div>
     } @else {
@@ -41,11 +36,8 @@
         </div>
         <div class="calendar-body">
             @for(day of month; track day){
-            <app-calendar-day [dayToShow]="day"
-                              [selectedDay]="selectedDay"
-                              [calendarType]="calendarType"
-                              [selectedCanton]="selectedCanton"
-                              [month]="monthIndex + 1" />
+            <app-calendar-day [dayToShow]="day" [selectedDay]="selectedDay" [calendarType]="calendarType"
+                [selectedCanton]="selectedCanton" [month]="monthIndex + 1" />
             }
         </div>
     </div>
