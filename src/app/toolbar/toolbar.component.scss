@@ -1,0 +1,126 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/mixins";
+
+.toolbar-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $white;
+    justify-content: space-between;
+    padding: 1rem;
+    overflow: hidden;
+    color: $blue;
+    font-size: 1.2rem;
+
+    .canton-select {
+        background-color: $beige;
+        filter: brightness(1.1);
+        height: 3rem;
+        text-transform: uppercase;
+    }
+
+    .select-date {
+        display: flex;
+
+        input {
+            height: 3rem;
+            font-size: 1.2rem;
+            padding: 0 0.5rem;
+            text-transform: uppercase;
+            background-color: $beige;
+            filter: brightness(1.1);
+            border: 1px solid $blue;
+        }
+    }
+
+    .days-to-show {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        .radio-buttons {
+            height: 3rem;
+            width: 6rem;
+            border: 1px solid $blue;
+            display: flex;
+            text-transform: uppercase;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            background-color: $beige;
+            filter: brightness(1.1);
+
+            &.checked {
+                background-color: $blue;
+                color: $beige;
+
+                &:hover {
+                    font-weight: initial;
+                    box-shadow: none;
+                }
+            }
+
+            &:hover {
+                font-weight: bold;
+                box-shadow: 2px 2px 0 $blue;
+            }
+
+            &:not(:nth-last-of-type(1)) {
+                margin-right: 1rem;
+            }
+
+            input {
+                opacity: 0;
+                position: absolute;
+                cursor: pointer;
+            }
+        }
+    }
+
+    input,
+    select {
+        transition: all 0.2s ease-in-out;
+
+        &:hover,
+        &:focus {
+            font-weight: bold;
+            box-shadow: 2px 2px 0 $blue;
+        }
+    }
+
+    @include xs {
+        height: auto;
+        font-size: 1rem;
+        flex-wrap: wrap;
+
+        input,
+        select {
+            margin-bottom: 1rem;
+        }
+
+        .days-to-show {
+            justify-content: center;
+            .radio-buttons {
+                width: 4.5rem;
+            }
+        }
+    }
+    @include sm {
+        height: auto;
+        font-size: 1rem;
+        flex-wrap: wrap;
+
+        input,
+        select {
+            margin-bottom: 1rem;
+        }
+
+        .days-to-show {
+            justify-content: center;
+            .radio-buttons {
+                width: 4.5rem;
+            }
+        }
+    }
+}

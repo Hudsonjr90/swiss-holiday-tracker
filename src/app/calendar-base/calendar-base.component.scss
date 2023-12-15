@@ -1,0 +1,146 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/mixins";
+
+.calendar-days-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    background-color: $white;
+    min-height: calc(100vh - 5rem);
+
+    &.year {
+        flex-direction: row;
+    }
+
+    .title-bar {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        h4 {
+            display: flex;
+            width: calc(100% / 7);
+            align-items: center;
+            justify-content: center;
+
+            &.single {
+                width: 100%;
+                font-size: 1.2rem;
+            }
+
+            @include xs {
+                display: initial;
+                text-align: center;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 0 0.2rem;
+            }
+            @include sm {
+                text-align: center;
+                display: initial;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 0 0.5rem;
+            }
+        }
+    }
+
+    .calendar-body {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        flex-wrap: wrap;
+
+        app-calendar-day {
+            display: flex;
+            height: auto;
+            width: calc(100% / 7);
+
+            &.single {
+                width: 100%;
+
+                min-height: calc(100vh - 9rem);
+            }
+            &.week {
+                min-height: calc(100vh - 9rem);
+            }
+        }
+    }
+
+    .month-block {
+        display: flex;
+        flex-direction: column;
+        border: 3px solid $blue;
+        margin: 0.5rem;
+        width: calc(50% - 1rem);
+        height: auto;
+        flex-wrap: wrap;
+        color: $blue;
+
+        @include xs {
+            width: 95%;
+            display: initial;
+        }
+        @include sm {
+            width: 95%;
+            display: initial;
+        }
+        @include md {
+            width: 95%;
+            display: initial;
+        }
+
+        h4 {
+            display: flex;
+            font-size: large;
+            font-weight: bold;
+            text-align: center;
+            align-content: center;
+            justify-content: center;
+            text-transform: uppercase;
+        }
+
+        .week-bar {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+            h5 {
+                width: calc(100% / 7);
+                display: flex;
+                font-weight: bold;
+                text-align: center;
+                align-content: center;
+                justify-content: center;
+                text-transform: uppercase;
+
+                @include xs {
+                    display: initial;
+                    text-align: center;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding: 0 0.2rem;
+                }
+                @include sm {
+                    text-align: center;
+                    display: initial;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding: 0 0.5rem;
+                }
+            }
+        }
+
+        .calendar-body {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+    }
+}

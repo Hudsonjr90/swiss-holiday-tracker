@@ -1,0 +1,17 @@
+@if(dayToShow){
+<div class="calendar-day"
+     [ngClass]="setClasses()">
+    <p class="title">
+        {{dayToShow.day }}
+
+        @if(calendarType === allCalendarTypes.year && dayToShow.dateType.dateType === allDateTypes.Holiday){
+        <span class="indicator"></span>
+        }
+    </p>
+    <div class="main-area">
+        <p [ngClass]="{'tooltip':calendarType === allCalendarTypes.year}">
+            {{dayToShow.dateType.holiday?.name}}
+        </p>
+    </div>
+</div>
+}

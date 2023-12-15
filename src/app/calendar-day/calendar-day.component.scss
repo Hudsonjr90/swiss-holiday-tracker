@@ -1,0 +1,138 @@
+@import "../../assets/styles/colors";
+@import "../../assets/styles/mixins";
+
+.calendar-day {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform-origin: center center;
+
+    &.right {
+        &:hover {
+            transform-origin: top left;
+        }
+    }
+    &.left {
+        &:hover {
+            transform-origin: top right;
+        }
+    }
+    &.top {
+        &.right {
+            &:hover {
+                transform-origin: bottom left;
+            }
+        }
+        &.left {
+            transform-origin: bottom right;
+        }
+    }
+    &.holiday,
+    &.pto,
+    &.work,
+    &.disabled {
+        &:hover {
+            filter: brightness(1.2);
+        }
+    }
+
+    &.has-tooltip {
+        &:hover {
+            transform: scale(2);
+            z-index: 10000000000000000;
+
+            .main-area {
+                p {
+                    &.tooltip {
+                        display: flex;
+                        font-size: 0.6rem;
+                    }
+                }
+            }
+
+            @include xs {
+                width: 200%;
+                &.is-year {
+                    font-size: 0.7rem;
+                }
+            }
+            @include sm {
+                width: 200%;
+                &.is-year {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+
+    .title {
+        margin-top: 0;
+        padding: 0;
+        font-weight: bold;
+        display: flex;
+
+        .indicator {
+            border-radius: 50%;
+            background-color: $orange;
+            width: 0.5rem;
+            height: 0.5rem;
+            display: flex;
+            align-self: center;
+            margin-left: 0.5rem;
+        }
+
+        @include xs {
+            flex-direction: column;
+            align-items: center;
+
+            .indicator {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &.is-month {
+        height: 10rem;
+    }
+
+    &.is-year {
+        font-size: 1rem;
+    }
+
+    &.holiday {
+        background-color: $light-green;
+    }
+
+    &.pto {
+        background-color: $light-blue;
+    }
+
+    &.work {
+        background-color: $light-red;
+    }
+
+    &.disabled {
+        background-color: $gray;
+    }
+
+    &.darken {
+        filter: brightness(0.95);
+    }
+
+    .main-area {
+        font-size: 1rem;
+
+        p {
+            padding: 0;
+            margin: 0;
+
+            &.tooltip {
+                display: none;
+            }
+        }
+    }
+}
